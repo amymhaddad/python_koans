@@ -12,7 +12,7 @@ def my_global_function(a,b):
 
 class AboutMethods(Koan):
     def test_calling_a_global_function(self):
-        self.assertEqual(__, my_global_function(2,3))
+        self.assertEqual(5, my_global_function(2,3))
 
     # NOTE: Wrong number of arguments is not a SYNTAX error, but a
     # runtime error.
@@ -24,8 +24,8 @@ class AboutMethods(Koan):
 
         # Note, the text comparison works for Python 3.2
         # It has changed in the past and may change in the future
-        self.assertRegex(msg,
-            r'my_global_function\(\) missing 2 required positional arguments')
+        self.assertEqual(msg,
+            "my_global_function() missing 2 required positional arguments: 'a' and 'b'")
 
         try:
             my_global_function(1, 2, 3)
@@ -33,7 +33,7 @@ class AboutMethods(Koan):
             msg = e.args[0]
 
         # Note, watch out for parenthesis. They need slashes in front!
-        self.assertRegex(msg, __)
+        self.assertEqual(msg, "my_global_function() takes 2 positional arguments but 3 were given")
 
     # ------------------------------------------------------------------
 
